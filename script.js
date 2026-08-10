@@ -115,46 +115,26 @@ function jump() {
 
 }
 
-
+// game loop
 let gameLoop = setInterval(function () {
 
-  
+    if(gameRunning === false){
+        return
+    }
+    
+    obstacleX = obstacleX - 5
+    obstacle.style.left = obstacleX + "px"
+   
+    if(obstacleX < -40){
+        obstacleX = 800
+        score++
+    }
 
-}, 20);
-
-
-
-function gameOver() {
-
-  gameRunning = false;
-
-  gameOverBox.style.display = "flex";
-
-}
-
-
-
-
-button.addEventListener("click", function () {
-
-  marioX = 50;
-  marioY = 0;
-
-  obstacleX = 800;
-
-  score = 0;
+    score.innerHTML = "score:" + score
+    
+}, 10);
 
 
-  mario.style.left = "50px";
-  mario.style.bottom = "0px";
 
-  obstacle.style.left = "800px";
 
-  scoreText.innerHTML = "Score: 0";
 
-  gameOverBox.style.display = "none";
-
-  gameRunning = true;
-
-});
-- [ ] 
