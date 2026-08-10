@@ -131,8 +131,31 @@ let gameLoop = setInterval(function () {
     }
 
     score.innerHTML = "score:" + score
+
+let marioBox = mario.getBoundingClientRect()
+let obstacleBox = obstacle.getBoundingClientRect()
+
+if(
+    marioBox.right > obstacleBox.left ||
+    marioBox.left < obstacleBox.right ||
+    marioBox.bottom > obstacleBox.top ||
+    marioBox.top < obstacleBox.bottom
+){
+  gameOver()
+}
+
+// game over
+
+function gameOver(){
+   gameRunning === false
+   gameOverBox.style.display = "flex"
+}
     
 }, 10);
+
+
+
+
 
 
 
