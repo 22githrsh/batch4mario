@@ -118,40 +118,40 @@ function jump() {
 // game loop
 let gameLoop = setInterval(function () {
 
-    if(gameRunning === false){
-        return
-    }
-    
-    obstacleX = obstacleX - 5
-    obstacle.style.left = obstacleX + "px"
-   
-    if(obstacleX < -40){
-        obstacleX = 800
-        score++
+    if (gameRunning === false) {
+        return;
     }
 
-    score.innerHTML = "score:" + score
+    obstacleX = obstacleX - 5;
 
-let marioBox = mario.getBoundingClientRect()
-let obstacleBox = obstacle.getBoundingClientRect()
+    obstacle.style.left = obstacleX + "px";
 
-if(
-    marioBox.right > obstacleBox.left ||
-    marioBox.left < obstacleBox.right ||
-    marioBox.bottom > obstacleBox.top ||
-    marioBox.top < obstacleBox.bottom
-){
-  gameOver()
-}
+    if (obstacleX < -40) {
+        obstacleX = 800;
+        score++;
+    }
 
-// game over
+    scoreText.innerHTML = "Score: " + score;
 
-function gameOver(){
-   gameRunning === false
-   gameOverBox.style.display = "flex"
-}
-    
+    let marioBox = mario.getBoundingClientRect();
+    let obstacleBox = obstacle.getBoundingClientRect();
+
+    if (
+        marioBox.right > obstacleBox.left &&
+        marioBox.left < obstacleBox.right &&
+        marioBox.bottom > obstacleBox.top &&
+        marioBox.top < obstacleBox.bottom
+    ) {
+        gameOver();
+    }
+
 }, 10);
+
+
+function gameOver() {
+    gameRunning = false;
+    gameOverBox.style.display = "flex";
+}
 
 
 
